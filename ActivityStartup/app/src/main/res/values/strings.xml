@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ActivityStartup</string>
+
+    <string name="unit_price_quote">单价（元/吨）</string>
+    <string name="quote_review">报价复议</string>
+    <string name="quote_remark">报价备注</string>
+    <string name="quote_range">报价范围:5000-40000(元/吨)</string>
+    <string name="quote_too_high">输入金额应不大于40000</string>
+    <string name="quote_too_low">输入金额应不少于5000</string>
+
+</resources>

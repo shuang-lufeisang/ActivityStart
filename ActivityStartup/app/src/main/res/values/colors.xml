@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 主题色-->
+    <color name="orangeTab">#fa8317</color>
+
+    <color name="start_orange">#FF8500</color>
+    <color name="end_orange">#F64927</color>
+
+
+    <!-- 背景               纯白色-->
+    <color name="whiteBackground">#FFFFFF</color>
+    <!-- 偏灰色大背景  all: index -->
+    <color name="greyBackground">#F7F7F7</color>
+    <color name="greyBackgroundDarker">#E5E5E5</color>
+
+    <color name="black">#FF000000</color>
+    <color name="near_black">#FF1B1B1B</color>
+    <!--字体的颜色，纯黑色-->
+    <color name="blackText">#333333</color>
+    <!--字体的颜色 黑色1 -->
+    <color name="blackText1">#212121</color>
+    <!--字体的颜色 黑色2 -->
+    <color name="blackText2">#666666</color>
+    <!--字体的颜色 黑色3-->
+    <color name="blackText3">#636869</color>
+    <!--字体的颜色 黑色4-->
+    <color name="blackText4">#999999</color>
+
+    <color name="disableButton">#a9a9a9</color>
+
+
+    <!-- 灰色下划线 -->
+    <color name="grayLine">#e5e5e5</color>
+    <color name="grayLineDarker">#c7c7c7</color>
+
+
+    <!--透明色-->
+    <color name="colorTransparent">#00000000</color>
+
+
+
+</resources>

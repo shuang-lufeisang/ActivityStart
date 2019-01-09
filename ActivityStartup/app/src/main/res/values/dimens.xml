@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="toolbar_title_size">18sp</dimen>
+
+
+    <dimen name="item_icon_padding">10dp</dimen>
+
+    <!-- quote detail -->
+    <dimen name="margin_linear_quote">10dp</dimen>
+    <dimen name="height_title_quote">30dp</dimen>
+
+    <!-- enter箭头距离其左侧 文字的距离 -->
+    <dimen name="margin_arrow_right">10dp</dimen>
+
+</resources>

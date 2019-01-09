@@ -1,0 +1,79 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+
+        <item name="colorPrimary">@color/start_orange</item>
+        <item name="colorPrimaryDark">@color/end_orange</item>
+        <item name="colorAccent">@color/orangeTab</item>
+    </style>
+
+
+    <!-- no action bar -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="toolbarStyle">@style/ClubToolbar</item>
+    </style>
+
+
+    <!-- toolbar set contentInsetStart = 0dp (default 16dp)  解决toolbar 开头空隙问题-->
+    <style name="ClubToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+    </style>
+
+
+
+    <!--  报价详情 字体 -->
+    <style name="QuoteDetailTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">left</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:layout_marginTop">@dimen/margin_linear_quote</item>
+        <item name="android:layout_marginBottom">@dimen/margin_linear_quote</item>
+    </style>
+
+    <!--  报价详情 状态 字体 -->
+    <style name="QuoteDetailStatusTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:layout_marginTop">@dimen/margin_linear_quote</item>
+        <item name="android:layout_marginBottom">@dimen/margin_linear_quote</item>
+    </style>
+
+    <!--  报价详情 小标题 字体 -->
+    <style name="QuoteDetailTitleTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:background">@drawable/underline_orange_title</item>
+    </style>
+
+
+    <!--  求购 标题 CheckBox -->
+    <style name="CheckableToolbarStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/checkable_white_bold_text</item>
+        <item name="android:checked">false</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:drawableRight">@drawable/triangle_white_down_up</item>
+    </style>
+
+</resources>

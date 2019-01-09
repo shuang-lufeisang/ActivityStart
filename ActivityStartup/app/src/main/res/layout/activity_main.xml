@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.duan.android.activitystartup.MainActivity">
+
+    <include layout="@layout/base_title_bar"/>
+    <LinearLayout
+        android:id="@+id/linear_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@color/whiteBackground">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unit_price_quote"
+            style="@style/QuoteDetailTextStyle"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_icon_padding"
+            android:text=""
+            style="@style/QuoteDetailStatusTextStyle"/>
+
+        <ImageView
+            android:id="@+id/iv_enter_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_arrow_right"
+            android:src="@drawable/enter"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/greyBackground"/>
+
+    <LinearLayout
+        android:id="@+id/linear_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@color/whiteBackground">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WebView"
+            style="@style/QuoteDetailTextStyle"/>
+
+
+        <TextView
+            android:id="@+id/tv_web_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_icon_padding"
+            android:text=""
+            style="@style/QuoteDetailStatusTextStyle"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_arrow_right"
+            android:src="@drawable/enter"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/greyBackground"/>
+
+
+    <!--&lt;!&ndash; 报价复议 &ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linear_review"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/height_title_quote"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:background="@color/whiteBackground">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="@string/quote_review"-->
+            <!--style="@style/QuoteDetailTitleTextStyle"/>-->
+
+    <!--</LinearLayout>-->
+    <!--<View-->
+        <!--android:id="@+id/grey_line_review"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@color/grayLineDarker"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linear_remark"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:background="@color/whiteBackground">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/quote_remark"-->
+            <!--style="@style/QuoteDetailTextStyle"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_remarks_note"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginLeft="@dimen/item_icon_padding"-->
+            <!--android:text="采购价格便宜10元"-->
+            <!--style="@style/QuoteDetailStatusTextStyle"/>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_enter5"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginLeft="@dimen/margin_arrow_right"-->
+            <!--android:visibility="gone"-->
+            <!--android:src="@drawable/enter"/>-->
+
+    <!--</LinearLayout>-->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@color/grayLineDarker"/>-->
+
+</LinearLayout>
