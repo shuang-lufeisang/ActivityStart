@@ -34,4 +34,7 @@ dependencies {
 
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
 
+    compile 'com.bm.photoview:library:1.4.1'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+
 }
