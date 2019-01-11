@@ -17,6 +17,7 @@
     <color name="greyBackground">#F7F7F7</color>
     <color name="greyBackgroundDarker">#E5E5E5</color>
 
+    <color name="blackBg">#000000</color>
     <color name="black">#FF000000</color>
     <color name="near_black">#FF1B1B1B</color>
     <!--字体的颜色，纯黑色-->

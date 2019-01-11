@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackBg"
+    tools:context="com.duan.android.activitystartup.js_web.PhotoBrowserActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 点击返回文章详情 -->
+    <ImageView
+        android:id="@+id/crossIv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:src="@drawable/cross" />
+
+    <!-- 页码 -->
+    <TextView
+        android:id="@+id/photoOrderTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="1/6"
+        android:textColor="@color/whiteBackground" />
+
+    <!-- 保存 -->
+    <TextView
+        android:id="@+id/saveTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="保存"
+        android:textColor="@color/whiteBackground" />
+
+    <ImageView
+        android:id="@+id/centerIv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/loading"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>

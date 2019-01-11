@@ -34,8 +34,9 @@ import butterknife.OnClick;
 /**
  * WebView
  *
- * 控制文章左右对齐
- */
+ * 1. 控制文章左右对齐
+ * 2. 点击查看大图 - 保存到本地
+ * */
 public class WebViewActivity extends BaseActivity {
 
     String TAG = "WebViewActivity";
