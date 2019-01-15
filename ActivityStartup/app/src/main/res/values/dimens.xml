@@ -17,4 +17,12 @@
     <!-- enter箭头距离其左侧 文字的距离 -->
     <dimen name="margin_arrow_right">10dp</dimen>
 
+    <!-- Dialog Style -->
+    <dimen name="dialog_width">222dp</dimen>
+    <dimen name="dialog_min_height">145dp</dimen>
+    <!--<dimen name="dialog_min_height">173dp</dimen>-->
+    <dimen name="dialog_light_border_stroke_width">0dp</dimen>
+    <dimen name="dialog_dark_border_stroke_width">1dp</dimen>
+    <dimen name="dialog_button_height">36dp</dimen>
+
 </resources>

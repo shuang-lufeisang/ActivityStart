@@ -76,4 +76,41 @@
         <item name="android:drawableRight">@drawable/triangle_white_down_up</item>
     </style>
 
+
+
+    <!-- Dialog-->
+    <style name="SlimDialog" parent="AlertDialog.AppCompat">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AppDialog.Light" parent="SlimDialog">
+        <item name="dialogBackground">@color/whiteBackground</item>
+        <item name="titleColor">@color/near_black</item>
+        <item name="messageColor">@color/blackText3</item>
+        <item name="buttonBackground">@drawable/slim_button_regular_light_background</item>
+        <item name="buttonTextColor">@color/slim_button_regular_light_text_color</item>
+        <item name="vividButtonBackground">@drawable/slim_button_vivid_light_background</item>
+        <item name="vividButtonTextColor">@color/slim_button_vivid_light_text_color</item>
+        <item name="dialogBorder">@dimen/dialog_light_border_stroke_width</item>
+    </style>
+
+    <style name="smallButtonTextStyle">
+        <item name="android:fontFamily">Helvetica Neue LT W1G 45 Light</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:spacing">20dp</item>
+    </style>
+    <style name="DialogButtonText" parent="@style/smallButtonTextStyle">
+        <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_height">@dimen/dialog_button_height</item>
+    </style>
+
+
 </resources>

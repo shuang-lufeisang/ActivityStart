@@ -8,7 +8,7 @@ import android.util.Log;
  * <pre>
  * author : Duan
  * time : 2019/01/11
- * desc :  JavascriptInterface
+ * desc :  js接口类
  * version: 1.0
  * </pre>
  */

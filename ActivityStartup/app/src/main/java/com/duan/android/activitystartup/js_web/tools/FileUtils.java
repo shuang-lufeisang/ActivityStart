@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.duan.android.activitystartup.util.LogUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,6 +25,8 @@ import java.util.Date;
  * </pre>
  */
 public class FileUtils {
+
+    static String TAG = "FileUtils";
 
     public static void savePhoto(final Context context, final Bitmap bmp, final SaveResultCallback saveResultCallback) {
         final File sdDir = getSDPath();
@@ -47,9 +51,11 @@ public class FileUtils {
                     fos.close();
                     saveResultCallback.onSavedSuccess();
                 } catch (FileNotFoundException e) {
+                    LogUtils.printError(TAG, "FileNotFoundException: " + e.toString());
                     saveResultCallback.onSavedFailed();
                     e.printStackTrace();
                 } catch (IOException e) {
+                    LogUtils.printError(TAG, "IOException: " + e.toString());
                     saveResultCallback.onSavedFailed();
                     e.printStackTrace();
                 }

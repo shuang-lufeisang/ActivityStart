@@ -1,9 +1,13 @@
 package com.duan.android.activitystartup.js_web;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -21,9 +25,11 @@ import com.bumptech.glide.request.target.Target;
 import com.duan.android.activitystartup.R;
 import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.js_web.tools.FileUtils;
+import com.duan.android.activitystartup.util.LogUtils;
 
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 网页中点击图片 展示大图
@@ -31,10 +37,10 @@ import butterknife.BindView;
 public class PhotoBrowserActivity extends BaseActivity {
 
     @BindView(R.id.pager) ViewPager mPager;
-    @BindView(R.id.crossIv) ImageView crossIv;
-    @BindView(R.id.photoOrderTv) TextView photoOrderTv;
-    @BindView(R.id.saveTv) TextView saveTv;
-    @BindView(R.id.centerIv) ImageView centerIv;
+    @BindView(R.id.crossIv) ImageView crossIv;         // 十字叉 图标
+    @BindView(R.id.photoOrderTv) TextView photoOrderTv;// 图片序号
+    @BindView(R.id.saveTv) TextView saveTv;            // 保存
+    @BindView(R.id.centerIv) ImageView centerIv;       // 加载中 图标
 
     private String curImageUrl = "";
     private String[] imageUrls = new String[]{}; // 网页中图片数组
@@ -43,6 +49,13 @@ public class PhotoBrowserActivity extends BaseActivity {
     private int[] initialedPositions = null;
     private ObjectAnimator objectAnimator;
     private View curPage;
+
+    // 动态申请 读写权限
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    //请求状态码
+    private static int REQUEST_PERMISSION_CODE = 1;
 
     @Override
     public int getContentView() {
@@ -95,6 +108,24 @@ public class PhotoBrowserActivity extends BaseActivity {
                         }
                     }).into(view);
 
+                    // PhotoView on click
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(PhotoBrowserActivity.this, "clicked picture", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    });
+
+                    // PhotoView on long click
+                    view.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+                            Toast.makeText(PhotoBrowserActivity.this, "ON LONG CLICK picture", Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                    });
+
                     container.addView(view);
                     return view;
                 }
@@ -146,6 +177,25 @@ public class PhotoBrowserActivity extends BaseActivity {
             }
         });
 
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
+            }
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            for (int i = 0; i < permissions.length; i++) {
+                LogUtils.printCloseableInfo("MainActivity", "申请的权限为：" + permissions[i] + ",申请结果：" + grantResults[i]);
+            }
+        }
+
     }
 
     @Override
@@ -160,7 +210,30 @@ public class PhotoBrowserActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        releaseResource();
+        curPage = null;
+        if (mPager != null) {
+            mPager.removeAllViews();
+            mPager = null;
+        }
         super.onDestroy();
+    }
+
+    // 退出查看大图
+    @OnClick(R.id.crossIv)
+    public void onCrossClicked(){
+        finish();
+    }
+    // 点击分享图片
+    @OnClick(R.id.shareTv)
+    public void onShareClicked(){
+        // TODO: 2019/1/15 share
+        finish();
+    }
+    // 点击保存图片
+    @OnClick(R.id.saveTv)
+    public void onSaveClicked(){
+        savePhotoToLocal();
     }
 
     // image position
@@ -183,6 +256,7 @@ public class PhotoBrowserActivity extends BaseActivity {
         return -1;
     }
 
+    // loading animation
     private void showLoadingAnimation() {
         centerIv.setVisibility(View.VISIBLE);
         centerIv.setImageResource(R.drawable.loading);

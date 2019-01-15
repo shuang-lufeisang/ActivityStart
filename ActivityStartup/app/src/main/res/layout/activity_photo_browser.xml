@@ -45,6 +45,18 @@
         android:text="保存"
         android:textColor="@color/whiteBackground" />
 
+    <!-- 分享 -->
+    <TextView
+        android:id="@+id/shareTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="分享"
+        android:textColor="@color/whiteBackground" />
+
     <ImageView
         android:id="@+id/centerIv"
         android:layout_width="32dp"

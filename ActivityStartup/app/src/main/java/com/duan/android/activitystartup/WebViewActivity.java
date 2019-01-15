@@ -19,6 +19,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.duan.android.activitystartup.base.BaseActivity;
+import com.duan.android.activitystartup.js_web.MJavascriptInterface;
+import com.duan.android.activitystartup.js_web.MyWebViewClient;
+import com.duan.android.activitystartup.js_web.tools.StringUtils;
 import com.duan.android.activitystartup.util.LogUtils;
 import com.duan.android.activitystartup.util.ScreenUtils;
 
@@ -51,6 +54,8 @@ public class WebViewActivity extends BaseActivity {
     private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;\">%s</body></html>";
     private static final String       IMG_HEARD = "<html><head><meta name=\\\"viewport\\\" content=\\\"width=device-width,initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0,user-scalable=yes\\\"/><style>img{max-width:100% !important;height:auto !important;}</style></head><body style=\"text-align:justify;margin:0;\">%s</body></html>";
     String content;
+
+    private String[] imageUrls;  // get images url from html
 
     public static void startWebViewActivity(Context context) {
         LogUtils.printInfo("WebViewActivity", "=================================== startWebViewActivity ===================");
@@ -109,10 +114,16 @@ public class WebViewActivity extends BaseActivity {
     // init WebView
     private void initWebView() {
 
+        String htmlContent = getAssetsString("news.html", this);
+        LogUtils.printCloseableInfo(TAG, "htmlContent: " + htmlContent);
+
         mWebView.setWebChromeClient(webChromeClient);
         mWebView.setWebViewClient(webViewClient);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+        imageUrls = StringUtils.returnImageUrlsFromHtml(htmlContent);  // get images url from html
+
         webSettings.setBlockNetworkImage(false);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -125,8 +136,6 @@ public class WebViewActivity extends BaseActivity {
 
 
 
-        String htmlContent = getAssetsString("news.html", this);
-        LogUtils.printCloseableInfo(TAG, "htmlContent: " + htmlContent);
 
         // mWebView.loadDataWithBaseURL(null, String.format(WEBVIEW_CONTENT, content),"text/html", "UTF-8",null);
         // mWebView.loadDataWithBaseURL(null, getHtmlContent(htmlContent),"text/html", "UTF-8",null);
@@ -140,6 +149,8 @@ public class WebViewActivity extends BaseActivity {
 //        LogUtils.printCloseableInfo(TAG, "body: " +body);
 //        mWebView.loadDataWithBaseURL(linkCss, body, "text/html", "UTF-8", null);
 
+        mWebView.addJavascriptInterface(new MJavascriptInterface(this,imageUrls), "imagelistener");
+        mWebView.setWebViewClient(new MyWebViewClient());
 
 
     }
