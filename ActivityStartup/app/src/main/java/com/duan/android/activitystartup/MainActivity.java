@@ -1,6 +1,10 @@
 package com.duan.android.activitystartup;
 
 import android.content.Intent;
+<<<<<<< Updated upstream
+=======
+import android.view.View;
+>>>>>>> Stashed changes
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -97,4 +101,27 @@ public class MainActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_ad:
+                gotoAdvertisement();
+                dialog.dismiss();
+                break;
+            case R.id.close_ad:
+                dialog.dismiss();
+                break;
+        }
+    }
+
+    private void gotoAdvertisement(){
+        Intent intent = new Intent(getBaseContext(), WebViewActivity.class);
+        startActivity(intent);
+    }
+
+
+>>>>>>> Stashed changes
 }

@@ -33,6 +33,10 @@
 
     <color name="disableButton">#a9a9a9</color>
 
+    <color name="warm_grey_80_opacity">#CCE7E3DE</color>
+    <!-- dialog -->
+    <color name="itemBackground">#DD7D7D7D</color>
+
 
     <!-- 灰色下划线 -->
     <color name="grayLine">#e5e5e5</color>
