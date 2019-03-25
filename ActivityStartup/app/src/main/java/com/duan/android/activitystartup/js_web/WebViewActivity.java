@@ -1,4 +1,4 @@
-package com.duan.android.activitystartup;
+package com.duan.android.activitystartup.js_web;
 
 
 import android.content.Context;
@@ -18,15 +18,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.duan.android.activitystartup.R;
 import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.util.LogUtils;
 import com.duan.android.activitystartup.util.ScreenUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.DecimalFormat;
 
 import butterknife.BindView;
 import butterknife.OnClick;

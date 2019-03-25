@@ -13,13 +13,13 @@
         android:layout_height="match_parent" />
 
     <!-- 点击返回文章详情 -->
-    <ImageView
-        android:id="@+id/crossIv"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:src="@drawable/cross" />
+    <!--<ImageView-->
+    <!--android:id="@+id/crossIv"-->
+    <!--android:layout_width="24dp"-->
+    <!--android:layout_height="24dp"-->
+    <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
+    <!--android:src="@drawable/cross" />-->
 
     <!-- 页码 -->
     <TextView
@@ -45,6 +45,18 @@
         android:text="保存"
         android:textColor="@color/whiteBackground" />
 
+    <!-- 分享 -->
+    <TextView
+        android:id="@+id/shareTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="分享"
+        android:textColor="@color/whiteBackground" />
+
     <ImageView
         android:id="@+id/centerIv"
         android:layout_width="32dp"
@@ -52,5 +64,6 @@
         android:src="@drawable/loading"
         android:layout_gravity="center"
         android:visibility="gone" />
+
 
 </FrameLayout>

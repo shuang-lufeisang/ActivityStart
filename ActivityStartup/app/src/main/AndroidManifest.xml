@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.xiaomi.market.sdk.UPDATE" />
 
     <application
         android:name=".base.BaseApplication"
@@ -21,10 +25,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoUpdateActivity" />
-        <activity android:name=".WebViewActivity" />
+        <activity android:name=".InfoUpdateActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".js_web.WebViewActivity" />
         <activity android:name=".js_web.PhotoBrowserActivity" />
-        <activity android:name=".js_web.MWebViewActivity"></activity>
+        <activity android:name=".propertySheet.PropertySheetActivity" />
+        <activity android:name=".furglass.FurGlassActivity" />
+        <activity android:name=".widget.WidgetActivity" />
+
+        <!-- 小米检查更新SDK -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.duan.android.activitystartup.selfupdate.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/xiaomi_update_sdk_file_paths" />
+        </provider>
+
+        <activity android:name=".clearcache.ClearCacheActivity"></activity>
     </application>
 
 </manifest>

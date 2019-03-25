@@ -30,36 +30,52 @@
 
 
 
-    <!--  报价详情 字体 -->
-    <style name="QuoteDetailTextStyle" parent="TextAppearance.AppCompat">
+    <!-- black text; left; margin ; 12sp  -->
+    <style name="TextLeftStyle" parent="TextAppearance.AppCompat">
         <item name="android:gravity">left</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blackText</item>
-        <item name="android:layout_marginTop">@dimen/margin_linear_quote</item>
-        <item name="android:layout_marginBottom">@dimen/margin_linear_quote</item>
+        <item name="android:layout_marginTop">@dimen/margin_text</item>
+        <item name="android:layout_marginBottom">@dimen/margin_text</item>
     </style>
 
-    <!--  报价详情 状态 字体 -->
-    <style name="QuoteDetailStatusTextStyle" parent="TextAppearance.AppCompat">
+    <!--  black text; right; margin ; 12sp -->
+    <style name="TextRightStyle" parent="TextAppearance.AppCompat">
         <item name="android:gravity">right</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blackText</item>
-        <item name="android:layout_marginTop">@dimen/margin_linear_quote</item>
-        <item name="android:layout_marginBottom">@dimen/margin_linear_quote</item>
+        <item name="android:layout_marginTop">@dimen/margin_text</item>
+        <item name="android:layout_marginBottom">@dimen/margin_text</item>
     </style>
 
-    <!--  报价详情 小标题 字体 -->
-    <style name="QuoteDetailTitleTextStyle" parent="TextAppearance.AppCompat">
+    <!--  black text; right; margin ; 12sp -->
+    <style name="NormalTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:layout_marginTop">@dimen/margin5_text</item>
+        <item name="android:layout_marginBottom">@dimen/margin5_text</item>
+    </style>
+
+    <!--  black title text with orange underline; 12sp -->
+    <style name="BlackTitleStyle" parent="TextAppearance.AppCompat">
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blackText</item>
         <item name="android:background">@drawable/underline_orange_title</item>
     </style>
 
+    <!--  orange title text with orange underline; left; 16sp -->
+    <style name="OrangeTitleStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/orangeTab</item>
+        <item name="android:background">@drawable/underline_orange_title</item>
+    </style>
 
-    <!--  求购 标题 CheckBox -->
+
+    <!-- CheckBox with white triangle on it's right side -->
     <style name="CheckableToolbarStyle" parent="TextAppearance.AppCompat">
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
@@ -75,5 +91,34 @@
         <item name="android:drawablePadding">5dp</item>
         <item name="android:drawableRight">@drawable/triangle_white_down_up</item>
     </style>
+
+    <!-- Checkable item  checked: orange oval bg(or grey ring)-->
+    <style name="CheckLabelMenuStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_checkable_text</item>
+        <item name="android:button">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@drawable/check_waterfall_bg</item>
+        <item name="android:drawableLeft">@null</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Checkable letter (side bar)  checked: orange circle bg (or white bg)-->
+    <style name="CheckableLetterStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blackText2</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/check_letter_bg</item>
+        <!--<item name="android:layout_marginLeft">5dp</item>-->
+        <!--<item name="android:layout_marginRight">5dp</item>-->
+        <!--<item name="android:layout_marginTop">10dp</item>-->
+        <!--<item name="android:layout_marginBottom">10dp</item>-->
+        <item name="android:gravity">center</item>
+    </style>
+
 
 </resources>

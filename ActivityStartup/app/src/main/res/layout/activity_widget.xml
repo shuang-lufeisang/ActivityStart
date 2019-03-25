@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.duan.android.activitystartup.widget.WidgetActivity">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/autoSizeTv"
+        android:layout_width="@dimen/dimen_105"
+        android:layout_height="@dimen/dimen_32"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeStepGranularity="@dimen/dimen_sp_1"
+        app:autoSizeMinTextSize="@dimen/dimen_sp_8"
+        app:autoSizeMaxTextSize="@dimen/dimen_sp_12"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/greyBackground"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/autoSizeTv2"
+        android:layout_width="@dimen/dimen_105"
+        android:layout_height="@dimen/dimen_32"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeStepGranularity="@dimen/dimen_sp_1"
+        app:autoSizeMinTextSize="@dimen/dimen_sp_8"
+        app:autoSizeMaxTextSize="@dimen/dimen_sp_12"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/greyBackground"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/autoSizeTv3"
+        android:layout_width="@dimen/dimen_105"
+        android:layout_height="@dimen/dimen_32"
+        android:gravity="center_vertical"
+        android:maxLines="1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/greyBackground"/>
+
+</LinearLayout>

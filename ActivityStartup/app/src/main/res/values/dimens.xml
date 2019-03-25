@@ -2,7 +2,7 @@
 <resources>
 
 
-    <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="toolbar_height">70dp</dimen>
     <dimen name="toolbar_title_size">18sp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -11,14 +11,21 @@
     <dimen name="item_icon_padding">10dp</dimen>
 
     <!-- quote detail -->
-    <dimen name="margin_linear_quote">10dp</dimen>
+    <dimen name="margin5_text">5dp</dimen>
+    <dimen name="margin_text">10dp</dimen>
+
     <dimen name="height_title_quote">30dp</dimen>
 
     <!-- enter箭头距离其左侧 文字的距离 -->
     <dimen name="margin_arrow_right">10dp</dimen>
 
-<<<<<<< Updated upstream
-=======
+
+    <!-- 字母指示条 item size -->
+    <dimen name="item_check_width">30dp</dimen>
+    <dimen name="item_check_height">30dp</dimen>
+
+
+
     <!-- Dialog Style -->
     <dimen name="dialog_width">222dp</dimen>
     <dimen name="dialog_min_height">145dp</dimen>
@@ -27,6 +34,13 @@
     <dimen name="dialog_dark_border_stroke_width">1dp</dimen>
     <dimen name="dialog_button_height">36dp</dimen>
 
+
+    <!-- -->
+    <dimen name="dimen_105">105dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_sp_1">1sp</dimen>
+    <dimen name="dimen_sp_8">8sp</dimen>
+    <dimen name="dimen_sp_12">12sp</dimen>
 
 >>>>>>> Stashed changes
 </resources>

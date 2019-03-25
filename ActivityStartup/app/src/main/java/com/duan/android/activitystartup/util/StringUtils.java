@@ -1,4 +1,4 @@
-package com.duan.android.activitystartup.js_web.tools;
+package com.duan.android.activitystartup.util;
 
 import android.util.Log;
 
@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * <pre>
  * author : Duan
- * time : 2019/01/11
+ * time : 2019/01/21
  * desc :
  * version: 1.0
  * </pre>

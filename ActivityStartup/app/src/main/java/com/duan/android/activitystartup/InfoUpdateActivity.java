@@ -1,24 +1,29 @@
 package com.duan.android.activitystartup;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.graphics.Rect;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.util.Log;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.base.Constant;
 import com.duan.android.activitystartup.util.LogUtils;
+import com.duan.android.activitystartup.widget.SoftKeyboardDetectLinearLayout;
 
 import java.text.DecimalFormat;
 
@@ -29,7 +34,7 @@ import butterknife.OnClick;
  * 修改信息页面
  * 1. 价格 数字: 保留两位小数
  */
-public class InfoUpdateActivity extends BaseActivity {
+public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDetectLinearLayout.Listener{
 
     String TAG = "InfoUpdateActivity";
 
@@ -77,11 +82,6 @@ public class InfoUpdateActivity extends BaseActivity {
     public static Intent getInfoUpdateIntent(Context context, int mode, String title, String content, boolean isHint) {
         LogUtils.printInfo("InfoUpdateActivity", "=================================== getInfoUpdateIntent ===================");
         Intent intent = new Intent(context, InfoUpdateActivity.class);
-//        intent.setAction(Intent.ACTION_VIEW);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         intent.putExtra(MODE_INDEX, mode);
         intent.putExtra(TITLE_INDEX, title);
         intent.putExtra(CONTENT_INDEX, content);
@@ -89,7 +89,6 @@ public class InfoUpdateActivity extends BaseActivity {
 
         return intent;
     }
-
 
     @Override
     public int getContentView() {
@@ -105,6 +104,7 @@ public class InfoUpdateActivity extends BaseActivity {
     @Override
     public void initListener() {
 
+        //setListenerToRootView(); // 键盘监听事件
     }
 
     @Override
@@ -224,7 +224,6 @@ public class InfoUpdateActivity extends BaseActivity {
         }});
     }
 
-
     // 校验报价 5000-40000
     private boolean checkQuote(String currentContent) {
         String quoteLowRemind = getResources().getString(R.string.quote_too_low);
@@ -246,4 +245,67 @@ public class InfoUpdateActivity extends BaseActivity {
         }
     }
 
+
+
+    /** 监听键盘事件 */
+    private void setListenerToRootView() {
+
+        final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                LogUtils.printCloseableInfo(TAG, "[onGlobalLayout] .. in ..");
+                boolean mKeyboardUp = isKeyboardShown(rootView);
+                if (mKeyboardUp) {
+                    //showPromptMessage("键盘弹出");
+                    LogUtils.printCloseableInfo(TAG, "[onGlobalLayout] .. 键盘弹出");
+                } else {
+                    //showPromptMessage("键盘收起");
+                    LogUtils.printCloseableInfo(TAG, "[onGlobalLayout] .. 键盘收起");
+                }
+            }
+        });
+
+    }
+
+    private boolean isKeyboardShown(View rootView) {
+        final int softKeyboardHeight = 100;
+        Rect r = new Rect();
+        rootView.getWindowVisibleDisplayFrame(r);
+        DisplayMetrics dm = rootView.getResources().getDisplayMetrics();
+        int heightDiff = rootView.getBottom() - r.bottom;
+        float measure = softKeyboardHeight * dm.density;
+        LogUtils.printCloseableInfo(TAG, "=========== heightDiff: " + heightDiff);
+        LogUtils.printCloseableInfo(TAG, "=========== measure: " + measure);
+        return heightDiff > softKeyboardHeight * dm.density;
+    }
+
+//    @Override
+//    public void onGlobalLayout() {
+//        LogUtils.printCloseableInfo(TAG, "====== ViewTreeObserver.OnGlobalLayoutListener onGlobalLayout ========");
+//
+//        final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+//
+//        int heightDiff = rootView.getRootView().getHeight() - rootView.getHeight();
+//        if (heightDiff > dpToPx(this, 200)) { // if more than 200 dp, it's probably a keyboard...
+//            // ... do something here
+//            LogUtils.printCloseableInfo(TAG, "====== heightDiff more than 200 dp, it's probably a keyboard... ========");
+//        }
+//
+//    }
+
+    /** dp -> px */
+    public static float dpToPx(Context context, float valueInDp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueInDp, metrics);
+    }
+
+    @Override
+    public void onSoftKeyboardShown(boolean isShowing) {
+        LogUtils.printCloseableInfo(TAG, "isShowing: "+ isShowing);
+        if (isShowing){
+        }else {
+        }
+    }
 }

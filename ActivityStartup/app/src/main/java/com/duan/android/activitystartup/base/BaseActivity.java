@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.lang.reflect.Field;
 
@@ -30,6 +31,15 @@ public abstract class BaseActivity <T extends BasePresenter> extends AppCompatAc
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //当前手机版本为Android 5.0及以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);   // 状态栏透明处理
+        }
+
 
         // 解决 7.0 以后的状态栏 蒙灰问题（DecorView的源码，7.0 是单独类 有新属性 mSemiTransparentStatusBarColor。反射修改之）
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){

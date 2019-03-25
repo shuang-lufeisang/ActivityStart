@@ -32,6 +32,8 @@
     <color name="blackText4">#999999</color>
 
     <color name="disableButton">#a9a9a9</color>
+    <!-- 透明 黑 作返回顶部标签 -->
+    <color name="grayTransparentCircleBg">#b2939393</color>
 
     <color name="warm_grey_80_opacity">#CCE7E3DE</color>
     <!-- dialog -->
@@ -45,6 +47,12 @@
 
     <!--透明色-->
     <color name="colorTransparent">#00000000</color>
+
+    <color name="link_blue">#6BB2FC</color>
+    <color name="priority_blue">#20cbff</color>
+    <color name="priority_green">#99CC00</color>
+    <color name="priority_yellow">#FFCC33</color>
+    <color name="priority_red">#FF0033</color>
 
 
 
