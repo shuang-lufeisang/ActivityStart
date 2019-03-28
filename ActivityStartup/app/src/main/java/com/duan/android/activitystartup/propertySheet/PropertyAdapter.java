@@ -52,6 +52,7 @@ public class PropertyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof  ViewHolder){
+            LogUtils.printCloseableInfo(TAG, "onBindViewHolder");
             final ViewHolder viewHolder = (ViewHolder) holder;
             final PropertyData.BreedProperty model = mData.get(position);
             viewHolder.tv.setText(model.breed);
@@ -82,8 +83,6 @@ public class PropertyAdapter extends RecyclerView.Adapter {
         return mData == null ? 0 : mData.size();
     }
 
-
-
     static class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.tv) TextView tv;
         @BindView(R.id.recycler_view) RecyclerView recyclerView;
@@ -93,7 +92,6 @@ public class PropertyAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
     }
-
 
     public void addItemClickListener(PropertyEventListener.OnItemClickListener listener){
         this.mListener = listener;
@@ -105,6 +103,15 @@ public class PropertyAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void setData( PropertyData data){
+        if (data.data != null && data.data.letterBreeds != null){
+            List<PropertyData.PropertyInfo> letterBreedList = data.data.letterBreeds;
+            setDataList(letterBreedList);
+        }else {
+            LogUtils.printCloseableInfo(TAG, "DATA == NULL");
+        }
+    }
+
     public void clear(){
         if (mData != null){
             mData.clear();
@@ -112,6 +119,8 @@ public class PropertyAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    // get all PropertyData.BreedProperty from List<PropertyData.PropertyInfo>
+    // 从一个类列表中 获取其指定 属性类 的列表
     private List<PropertyData.BreedProperty> initData(List<PropertyData.PropertyInfo> dataList){
 
         if (mData != null){

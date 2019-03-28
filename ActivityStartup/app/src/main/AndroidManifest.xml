@@ -25,8 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoUpdateActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".InfoUpdateActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".js_web.WebViewActivity" />
         <activity android:name=".js_web.PhotoBrowserActivity" />
         <activity android:name=".propertySheet.PropertySheetActivity" />
@@ -44,7 +45,17 @@
                 android:resource="@xml/xiaomi_update_sdk_file_paths" />
         </provider>
 
-        <activity android:name=".clearcache.ClearCacheActivity"></activity>
+        <activity android:name=".clearcache.ClearCacheActivity" />
+
+        <!--  scheme 链接启动App 的标识 -->
+        <activity android:name=".scheme.SchemeActivity">
+            <intent-filter>
+                <data android:scheme="schemedemo"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

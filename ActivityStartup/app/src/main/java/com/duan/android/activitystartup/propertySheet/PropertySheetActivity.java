@@ -2,6 +2,7 @@ package com.duan.android.activitystartup.propertySheet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -19,9 +20,17 @@ import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.base.BasePagerAdapter;
 import com.duan.android.activitystartup.base.FragmentFactory;
 import com.duan.android.activitystartup.util.LogUtils;
+import com.duan.android.activitystartup.util.StringUtils;
 import com.duan.android.activitystartup.widget.NoSlidingViewPager;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,11 +54,12 @@ public class PropertySheetActivity extends BaseActivity {
 
     private String TAG = "PropertySheetActivity";
 
+    @BindView(R.id.linear1) LinearLayout linearA;  // 使用Activity
+    @BindView(R.id.linear2) LinearLayout linearF;  // 使用Fragment
     @BindView(R.id.view_pager) NoSlidingViewPager mViewPager;
 
-    @BindView(R.id.list) RecyclerView mRecyclerView;
-    @BindView(R.id.sidebar) RecyclerView mSideBar;    // 侧边栏
-//    @BindView(R.id.tv_selected) TextView mSelectedTv; // 选中字母
+    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;     // 物性表
+    @BindView(R.id.recycler_slide_bar) RecyclerView mSideBar;     // 侧边栏
 
     private AlphabetAdapter mAlphabetAdapter;                 // alphabet side bar
     private PropertyAdapter mAdapter;                         // 物性表 适配器
@@ -86,11 +96,27 @@ public class PropertySheetActivity extends BaseActivity {
         mSubscriptions = new CompositeSubscription();
         model = NetDataModel.getInstance(this);
 
-        //initViewPager();   // 三层 fragment
+        updateView(mIsFragment);
+        if (mIsFragment){
+            initViewPager();   // 三层 fragment
+        }else {
+            initSideBarView();
+            initRecyclerView();
+        }
+    }
 
-        initSideBarView();
-        initRecyclerView();
-
+    // 判断使用 Fragment or Activity
+    private void updateView(boolean isFragment){
+        if (mIsFragment){
+            linearA.setVisibility(View.GONE);
+            linearF.setVisibility(View.VISIBLE);
+            initViewPager();   // 三层 fragment
+        }else {
+            linearA.setVisibility(View.VISIBLE);
+            linearF.setVisibility(View.GONE);
+            initSideBarView();
+            initRecyclerView();
+        }
     }
 
     // 初始化 ViewPager
@@ -162,10 +188,12 @@ public class PropertySheetActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        getPropertyData();
+
+        getPropertyData();   // 获取 网络数据
+        // getLocalPropertyData(); // 获取 本地数据
     }
 
-    // 物性表数据
+    // 获取 物性表数据
     private void getPropertyData(){
         Subscription rxSubscription = model
                 .getPropertyData()
@@ -202,6 +230,42 @@ public class PropertySheetActivity extends BaseActivity {
                     }
                 });
         mSubscriptions.add(rxSubscription);
+    }
+
+    // 获取本地 物性表数据
+    private void getLocalPropertyData(){
+        String jsonStr = StringUtils.getJson("alphabet_linkage", this);
+        LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= getLocalPropertyData "  + jsonStr);
+        // 解析jsonArray
+        Type listType = new TypeToken<PropertyData>(){}.getType();
+
+        Gson gson = new Gson();
+        // PropertyData data = gson.fromJson(jsonStr, listType);
+
+
+        // 解析jsonObject
+        PropertyData data = gson.fromJson(jsonStr, PropertyData.class);
+        data = GsonUtil.parseJsonWithGson(jsonStr, PropertyData.class);
+
+        if (data != null){
+            LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= data != null ");
+            if (data.data != null){
+                LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= data.data != null ");
+                if (data.data.letterBreeds != null){
+                    LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= letterBreeds.size(): " + data.data.letterBreeds.size());
+                    getAdapter().setDataList(data.data.letterBreeds);
+                    getAlphabetAdapter().setDataList(data.data.letterBreeds);
+                }
+            }else {
+                LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= data.data == null ");
+                showPromptMessage(data.msg);
+            }
+
+        }else {
+            LogUtils.printCloseableInfo(TAG, "获取本地 物性表数据 ========= data == null ");
+            showPromptMessage("data == null");
+        }
+
     }
 
     // Alphabet Adapter
@@ -293,5 +357,15 @@ public class PropertySheetActivity extends BaseActivity {
 
     }
 
+
+
+    static class GsonUtil{
+        // 将Json数据解析成相应的映射对象
+        public static <T> T parseJsonWithGson(String jsonData, Class<T> type) {
+            Gson gson = new Gson();
+            T result = gson.fromJson(jsonData, type);
+            return result;
+        }
+    }
 
 }

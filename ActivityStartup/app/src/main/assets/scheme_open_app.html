@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>scheme页面跳转协议</title>
+    </head>
+    <body>
+        <a href="schemedemo:" rel="external nofollow">启动程序</a>
+        <br>
+        <!--<a href="scheme内容://host内容?(传递参数)key1=value1&key2=value2" rel="external nofollow" >啦啦啦 内容随意 海贼火影宫崎骏 </a>-->
+        <!--<br>-->
+        <a href="schemedemo://duan.cn?type=101" rel="external nofollow">啦啦啦 内容随意 海贼火影宫崎骏 </a>
+        <br>
+    </body>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+             var url_ios =  'scheme://';  //苹果打开app的链接(由苹果开发提供)
+             var url_ios_download =  '/itunes.apple.com/cn/app/id1344738534?mt=8';//苹果下载的链接(由苹果开发提供)
+             var url_android = 'schemedemo://';//安卓打开app的链接(由安卓开发提供)
+             var url_android_download = 'https://a.app.qq.com/o/simple.jsp?pkgname=io.dcloud.ihwdz&fromcase=40002&from=singlemessage';//安卓下载app的链接(由安卓开发提供)
+
+             var u = navigator.userAgent;
+             var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+             var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+         if(isiOS){
+             location.href = url_ios;
+             var loadTime = new Date();
+             // 如果打开超时说明是没有安装，则跳到下载的地址
+             setTimeout(function(){
+                 var outTime = new Date()
+                 if(outTime - loadTime > 800){
+                     location.href = url_ios_download;
+                 }
+             },1000)
+         }else{
+             location.href = url_android;
+             var loadTime = new Date();
+             // 如果打开超时说明是没有安装，则跳到下载的地址
+             setTimeout(function(){
+                 var outTime = new Date()
+                 if(outTime - loadTime > 800){
+                     location.href = url_android_download;
+                }
+            },1000)
+         }
+
+     </script>
+</html>

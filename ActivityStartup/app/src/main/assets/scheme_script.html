@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>h5跳原生</title>
+    </head>
+
+    <body></body>
+
+    <script>
+        (function(){
+            var ua = navigator.userAgent.toLowerCase();
+            var t;
+            var config = {
+
+    /*scheme:必须*/
+                    scheme_IOS: 'schemedemo://',
+
+                    scheme_Adr: 'schemedemo://pszh.com/test/scheme?name=google&page=1',
+
+                    download_url: 'http://mb.ihwdz.com/users/download.html',
+
+                    timeout: 600
+            };
+
+            function openclient() {
+
+                var startTime = Date.now();
+
+                var ifr = document.createElement('iframe');
+
+                ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+
+                ifr.style.display = 'none';
+
+                document.body.appendChild(ifr);
+
+                var t = setTimeout(function() {
+
+                    var endTime = Date.now();
+
+                    if (!startTime || endTime - startTime < config.timeout + 200) {
+
+                        window.location = config.download_url;
+
+                    } else {
+
+                    }
+
+                }, config.timeout);
+
+                window.onblur = function() {
+
+                    clearTimeout(t);
+                }
+            }
+            openclient();
+
+        })()
+        </script>
+
+</html>
