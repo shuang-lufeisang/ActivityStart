@@ -9,256 +9,429 @@
 
     <include layout="@layout/base_title_bar"/>
 
-    <!-- 修改信息 -->
-    <LinearLayout
-        android:id="@+id/linear_price"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/unit_price_quote"
-            style="@style/BlackTitleStyle"/>
-
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_enter_price"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
+            <!-- 图形验证码 -->
+            <LinearLayout
+                android:id="@+id/linear_captcha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/captcha"
+                    style="@style/BlackTitleStyle"/>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text="captcha"
+                    style="@style/TextRightStyle"/>
 
-    <!-- WebView -->
-    <LinearLayout
-        android:id="@+id/linear_web_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WebView"
-            style="@style/TextLeftStyle"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
 
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
 
-        <TextView
-            android:id="@+id/tv_web_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
+            <!-- 修改信息 -->
+            <LinearLayout
+                android:id="@+id/linear_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit_price_quote"
+                    style="@style/BlackTitleStyle"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
+                <ImageView
+                    android:id="@+id/iv_enter_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
 
-    <!-- hw 物性表 含滑动字母指示条的 RecyclerView  未完待续 -->
-    <LinearLayout
-        android:id="@+id/linear_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RecyclerView with Alphabet"
-            style="@style/TextLeftStyle"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
 
-
-        <TextView
-            android:id="@+id/tv_recycler_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
+            <!-- WebView -->
+            <LinearLayout
+                android:id="@+id/linear_web_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WebView"
+                    style="@style/TextLeftStyle"/>
 
 
-    <!-- 高斯模糊 -->
-    <LinearLayout
-        android:id="@+id/linear_fur"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FurGlass"
-            style="@style/TextLeftStyle"/>
+                <TextView
+                    android:id="@+id/tv_web_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- hw 物性表 含滑动字母指示条的 RecyclerView  未完待续 -->
+            <LinearLayout
+                android:id="@+id/linear_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RecyclerView with Alphabet"
+                    style="@style/TextLeftStyle"/>
 
 
-        <TextView
-            android:id="@+id/tv_fur"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
+                <TextView
+                    android:id="@+id/tv_recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
-
-    <!-- autoSizeTextView -->
-    <LinearLayout
-        android:id="@+id/linear_auto_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="AutoSizeText"
-            style="@style/TextLeftStyle"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
 
 
-        <TextView
-            android:id="@+id/tv_auto_text"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
-
-    <!-- 跳转浏览器 -->
-    <LinearLayout
-        android:id="@+id/linear_browser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Browser"
-            style="@style/TextLeftStyle"/>
-
-        <TextView
-            android:id="@+id/tv_browser"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
+            <!-- 高斯模糊 -->
+            <LinearLayout
+                android:id="@+id/linear_fur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FurGlass"
+                    style="@style/TextLeftStyle"/>
 
 
-    <!-- 清理缓存 -->
-    <LinearLayout
-        android:id="@+id/linear_clean"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:background="@color/whiteBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="清理缓存"
-            style="@style/TextLeftStyle"/>
+                <TextView
+                    android:id="@+id/tv_fur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
 
-        <TextView
-            android:id="@+id/tv_clean"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_icon_padding"
-            android:text=""
-            style="@style/TextRightStyle"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_arrow_right"
-            android:src="@drawable/enter"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/greyBackground"/>
+            <!-- autoSizeTextView -->
+            <LinearLayout
+                android:id="@+id/linear_auto_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AutoSizeText"
+                    style="@style/TextLeftStyle"/>
+
+
+                <TextView
+                    android:id="@+id/tv_auto_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 跳转浏览器 -->
+            <LinearLayout
+                android:id="@+id/linear_browser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Browser"
+                    style="@style/TextLeftStyle"/>
+
+                <TextView
+                    android:id="@+id/tv_browser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 清理缓存 -->
+            <LinearLayout
+                android:id="@+id/linear_clean"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清理缓存"
+                    style="@style/TextLeftStyle"/>
+
+                <TextView
+                    android:id="@+id/tv_clean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    style="@style/TextRightStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+
+            <!-- 编辑信息 -->
+            <LinearLayout
+                android:id="@+id/linear_edit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="info input"
+                    android:gravity="center_vertical"
+                    style="@style/TextLeftStyle"/>
+
+                <EditText
+                    android:id="@+id/edit_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    android:text=""
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 倒计时 -->
+            <LinearLayout
+                android:id="@+id/linear_count_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="倒计时"
+                    style="@style/TextLeftStyle"/>
+
+                <com.duan.android.activitystartup.widget.CountDownHMSTextView
+                    android:id="@+id/tv_count_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/item_icon_padding"
+                    style="@style/TextRightStyle"
+                    android:textColor="@color/orangeTab"
+                    android:text="29:59"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 传感器 获取设备传感器 -->
+            <LinearLayout
+                android:id="@+id/linear_sensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获取设备传感器"
+                    style="@style/TextLeftStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 截屏处理分享 -->
+            <LinearLayout
+                android:id="@+id/linear_screen_shot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="截屏处理分享"
+                    style="@style/TextLeftStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

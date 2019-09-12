@@ -1,6 +1,5 @@
 package com.duan.android.activitystartup;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -8,7 +7,6 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -16,7 +14,6 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +30,7 @@ import butterknife.OnClick;
 /**
  * 修改信息页面
  * 1. 价格 数字: 保留两位小数
+ * 2. 处理键盘收放事件
  */
 public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDetectLinearLayout.Listener{
 
@@ -57,7 +55,6 @@ public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDete
     static final String MODE_INDEX = "mode";   // 用户信息；报价-单价；
 
     /**
-     *
      * @param context
      * @param mode
      * @param title
@@ -79,6 +76,7 @@ public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDete
         context.startActivity(intent);
     }
 
+    // isHint=true 展示提示文字 setHint; 否则直接填值 setText;
     public static Intent getInfoUpdateIntent(Context context, int mode, String title, String content, boolean isHint) {
         LogUtils.printInfo("InfoUpdateActivity", "=================================== getInfoUpdateIntent ===================");
         Intent intent = new Intent(context, InfoUpdateActivity.class);
@@ -129,6 +127,7 @@ public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDete
             isHint = getIntent().getBooleanExtra(HINT_INDEX, true);   // text or hint
             if (getIntent().getStringExtra(CONTENT_INDEX) != null){
                 contentStr = getIntent().getStringExtra(CONTENT_INDEX);
+                // isHint=true 展示提示文字 setHint; 否则直接填值 setText;
                 if (isHint){
                     editText.setHint(contentStr);
                 }else {
@@ -171,7 +170,7 @@ public class InfoUpdateActivity extends BaseActivity implements SoftKeyboardDete
             data.putExtra("value", input);
             LogUtils.printCloseableInfo(TAG, "data: " + data);
             setResult(2, data);
-            finish();//关闭该窗口
+            finish();// 关闭该窗口
 
         }
 

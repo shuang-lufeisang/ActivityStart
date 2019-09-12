@@ -50,4 +50,7 @@ dependencies {
 
     // 小米 检查更新SDK
     compile 'mi-appstore:xiaomi-update-sdk:4.0.3'
+
+    // 拼图验证码
+    compile 'com.luozm.captcha:captcha:1.1.2'
 }

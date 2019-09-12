@@ -48,6 +48,7 @@
     <!--透明色-->
     <color name="colorTransparent">#00000000</color>
 
+    <color name="cancel_blue">#2480e3</color>
     <color name="link_blue">#6BB2FC</color>
     <color name="priority_blue">#20cbff</color>
     <color name="priority_green">#99CC00</color>

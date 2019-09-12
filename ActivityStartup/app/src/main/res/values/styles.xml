@@ -29,7 +29,6 @@
     </style>
 
 
-
     <!-- black text; left; margin ; 12sp  -->
     <style name="TextLeftStyle" parent="TextAppearance.AppCompat">
         <item name="android:gravity">left</item>
@@ -118,6 +117,22 @@
         <!--<item name="android:layout_marginTop">10dp</item>-->
         <!--<item name="android:layout_marginBottom">10dp</item>-->
         <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 截图 全屏弹窗 -->
+    <style name="horizontal_driver_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/h_divider</item>
+        <item name="android:background">@color/blackText2</item>
+    </style>
+
+    <style name="full_screen_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item><!-- 全屏 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFrame">@android:color/transparent</item><!--边框-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
 

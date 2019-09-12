@@ -1,23 +1,36 @@
 package com.duan.android.activitystartup;
 
 import android.content.Intent;
+import android.hardware.Sensor;
 import android.net.Uri;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.base.Constant;
 import com.duan.android.activitystartup.furglass.FurGlassActivity;
 import com.duan.android.activitystartup.js_web.WebViewActivity;
 import com.duan.android.activitystartup.propertySheet.PropertySheetActivity;
+import com.duan.android.activitystartup.rxcaptcha.RxCaptchaActivity;
+import com.duan.android.activitystartup.screenshot.ScreenShotActivity;
+import com.duan.android.activitystartup.sensor.SensorActivity;
+import com.duan.android.activitystartup.util.ChineseCharToEn;
 import com.duan.android.activitystartup.util.LogUtils;
+import com.duan.android.activitystartup.widget.CountDownHMSTextView;
 import com.duan.android.activitystartup.widget.WidgetActivity;
+
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
+ * 0. 图形验证码
  * 1. 信息修改
  * 2. WebView
  * 3. 字母表侧边栏 RecyclerView联动
@@ -28,7 +41,7 @@ import butterknife.OnClick;
  */
 public class MainActivity extends BaseActivity {
 
-    String TAG = "MainActivity";
+    private String TAG = "MainActivity";
 
     @BindView(R.id.iv_back) ImageView backBt;
     @BindView(R.id.tv_title) TextView title;
@@ -42,6 +55,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.linear_recycler_view) LinearLayout linearRecycler;     // RecyclerView_linear
     @BindView(R.id.tv_recycler_view) TextView tvRecyclerView;             // RecyclerView result info
+
+    @BindView(R.id.tv_count_down) CountDownHMSTextView mCountDownTv;      // 30分钟倒计时
 
     private String mPrice = null;               // 单价
     private String mPriceTitle = null;          // 单价标题
@@ -61,6 +76,10 @@ public class MainActivity extends BaseActivity {
     public void initView() {
 
         title.setText("MyTestApp");
+        testChineseHeader();
+        count(); // 倒计时
+        mCountDownTv.startCountDown(30);
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN); // 默认隐藏软键盘
     }
 
     @Override
@@ -73,14 +92,24 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    // 图形验证码
+    @OnClick(R.id.linear_captcha)
+    public void onCaptchaClicked(){
+        Intent captchaIntent = new Intent(MainActivity.this, RxCaptchaActivity.class);
+        startActivity(captchaIntent);
+    }
+
+
     // 修改信息
     @OnClick(R.id.linear_price)
     public void onPriceClicked(){
-        String content;
-        boolean isHint = true;
+        String content;         // 展示内容
+        boolean isHint = true;  // setHint/setText
         mPrice = tvPrice.getText().toString();
+        // 当前有值则充当默认值；否则单独设置默认值；
+        // isHint=true 展示提示文字 setHint; 否则直接填值 setText;
         if (mPrice != null && mPrice.length() > 0){
-            content = "" + mPrice;
+            content = mPrice;
             isHint = false;
         }else {
             content = getResources().getString(R.string.quote_range);
@@ -88,8 +117,6 @@ public class MainActivity extends BaseActivity {
 
         // InfoUpdateActivity.startInfoUpdateActivity(this, Constant.InfoUpdate.INFO_QUOTE_PRICE, mPriceTitle, content, isHint);
         Intent intent = InfoUpdateActivity.getInfoUpdateIntent(this, Constant.InfoUpdate.INFO_QUOTE_PRICE, mPriceTitle, content, isHint);
-
-        // Intent intent = new Intent(MainActivity.this, InfoUpdateActivity.class);
         startActivityForResult(intent, REQUEST_CODE_PRICE);
     }
 
@@ -154,7 +181,9 @@ public class MainActivity extends BaseActivity {
         if (data != null){
             // 从修改价格 返回
             if (requestCode == REQUEST_CODE_PRICE){
-                tvPrice.setText(data.getStringExtra("value"));
+                String value = data.getStringExtra("value");
+
+                tvPrice.setText(value);
             }
             // WebViewActivity 返回
             if (requestCode == REQUEST_CODE_WEB){
@@ -164,6 +193,56 @@ public class MainActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+
+    // 倒计时
+    private void count() {
+        mCountDownTv
+                .setNormalText("29:59")
+                .setCountDownText("", "")
+                //.setCountDownText("重新获取(", "s)")
+                .setCloseKeepCountDown(true)//关闭页面保持倒计时开关
+                .setCountDownClickable(false)//倒计时期间点击事件是否生效开关
+                .setShowFormatTime(true)//是否格式化时间
+                .setIntervalUnit(TimeUnit.SECONDS)
+                .setOnCountDownStartListener(new CountDownHMSTextView.OnCountDownStartListener() {
+                    @Override
+                    public void onStart() {
+                        showPromptMessage("开始计时");
+                    }
+                })
+                .setOnCountDownTickListener(new CountDownHMSTextView.OnCountDownTickListener() {
+                    @Override
+                    public void onTick(long untilFinished) {
+                        LogUtils.printError(TAG,  "onTick: " + untilFinished);
+                    }
+                })
+                .setOnCountDownFinishListener(new CountDownHMSTextView.OnCountDownFinishListener() {
+                    @Override
+                    public void onFinish() {
+                        showPromptMessage("倒计时完毕");
+                        mCountDownTv.setText("倒计时完毕");
+                    }
+                })
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //showPromptMessage("点击");
+                    }
+                });
+    }
+
+    // 获取设备传感器
+    @OnClick(R.id.linear_sensor)
+    public void onSensorClicked(){
+        Intent intent = new Intent(this, SensorActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.linear_screen_shot)
+    public void onScreenShot(){
+        Intent intent = new Intent(this, ScreenShotActivity.class);
+        startActivity(intent);
+    }
 
     /**
      * 首页广告弹窗
@@ -186,5 +265,14 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    public void showPromptMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void testChineseHeader(){
+        ChineseCharToEn cte = new ChineseCharToEn();
+        Log.e(TAG, "获取拼音首字母 上海："+ cte.getAllFirstLetter("上海"));
+    }
 
 }

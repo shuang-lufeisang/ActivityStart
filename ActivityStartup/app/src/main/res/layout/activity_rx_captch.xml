@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="10dp"
+    android:orientation="vertical"
+    tools:context="com.duan.android.activitystartup.rxcaptcha.RxCaptchaActivity">
+
+    <!-- 图形验证码 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:background="#3F51B5">
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/iv_code"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:background="#666666"
+            />
+    </LinearLayout>
+
+
+
+    <!-- 拼图验证码 -->
+    <com.luozm.captcha.Captcha
+        android:id="@+id/captCha"
+        android:layout_width="match_parent"
+        app:mode="mode_bar"
+        app:src="@mipmap/ic_launcher"
+        app:blockSize="50dp"
+        app:max_fail_count="5"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/bt_progress_mode"
+        android:layout_marginTop="10dp"
+        android:onClick="changeProgressMode"
+        android:layout_width="match_parent"
+        android:text="无滑动条模式"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:onClick="changeProgressDrawable"
+        android:layout_width="match_parent"
+        android:text="更改滑动条样式"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:onClick="changePicture"
+        android:layout_width="match_parent"
+        android:text="更换图片"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

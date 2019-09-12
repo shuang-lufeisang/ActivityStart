@@ -1,11 +1,29 @@
 <resources>
     <string name="app_name">ActivityStartup</string>
 
+    <string name="captcha">图形验证码</string>
     <string name="unit_price_quote">单价（元/吨）</string>
     <string name="quote_review">报价复议</string>
     <string name="quote_remark">报价备注</string>
     <string name="quote_range">报价范围:5000-40000(元/吨)</string>
     <string name="quote_too_high">输入金额应不大于40000</string>
     <string name="quote_too_low">输入金额应不少于5000</string>
+
+    <string name="create_screen_shot">正在生成截图&#8230;</string>
+    <string name="wechat_not_install">您没有安装微信！</string>
+    <string name="qq_not_install">您没有安装QQ！</string>
+    <string name="wechat">微信</string>
+    <string name="wechat_circle">朋友圈</string>
+    <string name="qq">QQ好友</string>
+    <string name="qq_zone">QQ空间</string>
+    <string name="sso_auth_failed">授权失败</string>
+    <string name="sso_auth_cancel">授权取消</string>
+    <string name="my_fortune_share">我的分享</string>
+    <string name="share_success">分享成功</string>
+    <string name="share_failed">分享失败</string>
+    <string name="send_img_file_not_exist">文件不存在</string>
+
+    <string name="screenshot">截屏</string>
+    <string name="cancel">取消</string>
 
 </resources>

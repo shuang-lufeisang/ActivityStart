@@ -3,6 +3,8 @@
     package="com.duan.android.activitystartup">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,13 +19,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:windowSoftInputMode="stateAlwaysHidden">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".InfoUpdateActivity"
@@ -47,14 +51,23 @@
 
         <activity android:name=".clearcache.ClearCacheActivity" />
 
-        <!--  scheme 链接启动App 的标识 -->
+        <!-- scheme 链接启动App 的标识 -->
         <activity android:name=".scheme.SchemeActivity">
             <intent-filter>
-                <data android:scheme="schemedemo"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="messagejumpscheme" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
+        </activity>
+        <activity android:name=".rxcaptcha.RxCaptchaActivity" />
+        <activity android:name=".card.CardViewActivity" />
+        <activity android:name=".sensor.SensorActivity" />
+        <activity android:name=".screenshot.ScreenShotActivity" />
+        <activity android:name=".location.LocationActivity">
+
         </activity>
     </application>
 

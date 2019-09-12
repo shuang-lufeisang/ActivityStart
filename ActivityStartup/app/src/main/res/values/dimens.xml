@@ -42,5 +42,12 @@
     <dimen name="dimen_sp_8">8sp</dimen>
     <dimen name="dimen_sp_12">12sp</dimen>
 
+    <!-- screenshot share -->
+    <dimen name="sp_share_type">10sp</dimen>
+    <dimen name="h_divider">0.5dp</dimen>
+    <dimen name="h_top_bar">48dp</dimen>
+
+    <dimen name="dialog_padding">25dp</dimen>
+
 >>>>>>> Stashed changes
 </resources>
