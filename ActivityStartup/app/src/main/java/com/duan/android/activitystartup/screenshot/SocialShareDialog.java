@@ -106,8 +106,12 @@ public class SocialShareDialog extends Dialog implements View.OnClickListener, D
 
 
                 // 处理截屏 加背景图
-                mScreenBitmap = BitmapUtilLib.makeBitmapForShare(getContext(), mScreenBitmap,
-                        ScreenUtils.dip2px(getContext(), TOP_BAR_HEIGHT));
+                mScreenBitmap =
+                        BitmapUtilLib.makeBitmapForShare(
+                                getContext(),
+                                mScreenBitmap,
+                                ScreenUtils.dip2px(getContext(),
+                                TOP_BAR_HEIGHT));
 
                 showLoading(false);
                 mScreenIv.setImageBitmap(mScreenBitmap);

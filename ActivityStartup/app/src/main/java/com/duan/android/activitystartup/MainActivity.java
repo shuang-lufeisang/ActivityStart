@@ -1,7 +1,6 @@
 package com.duan.android.activitystartup;
 
 import android.content.Intent;
-import android.hardware.Sensor;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +14,7 @@ import com.duan.android.activitystartup.base.BaseActivity;
 import com.duan.android.activitystartup.base.Constant;
 import com.duan.android.activitystartup.furglass.FurGlassActivity;
 import com.duan.android.activitystartup.js_web.WebViewActivity;
+import com.duan.android.activitystartup.location.LocationActivity;
 import com.duan.android.activitystartup.propertySheet.PropertySheetActivity;
 import com.duan.android.activitystartup.rxcaptcha.RxCaptchaActivity;
 import com.duan.android.activitystartup.screenshot.ScreenShotActivity;
@@ -91,6 +91,21 @@ public class MainActivity extends BaseActivity {
     public void initData() {
 
     }
+
+    // 获取当前定位城市
+    @OnClick(R.id.linear_location)
+    public void onLocationGet(){
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivity(intent);
+    }
+
+    // 截屏处理+分享
+    @OnClick(R.id.linear_screen_shot)
+    public void onScreenShot(){
+        Intent intent = new Intent(this, ScreenShotActivity.class);
+        startActivity(intent);
+    }
+
 
     // 图形验证码
     @OnClick(R.id.linear_captcha)
@@ -238,11 +253,6 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.linear_screen_shot)
-    public void onScreenShot(){
-        Intent intent = new Intent(this, ScreenShotActivity.class);
-        startActivity(intent);
-    }
 
     /**
      * 首页广告弹窗

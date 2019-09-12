@@ -17,6 +17,60 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- 获取当前定位城市信息 -->
+            <LinearLayout
+                android:id="@+id/linear_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获取当前定位城市信息"
+                    style="@style/TextLeftStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
+            <!-- 截屏处理+分享 -->
+            <LinearLayout
+                android:id="@+id/linear_screen_shot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/whiteBackground">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="截屏处理+分享"
+                    style="@style/TextLeftStyle"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_arrow_right"
+                    android:src="@drawable/enter"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/greyBackground"/>
+
             <!-- 图形验证码 -->
             <LinearLayout
                 android:id="@+id/linear_captcha"
@@ -403,32 +457,6 @@
                 android:layout_height="10dp"
                 android:background="@color/greyBackground"/>
 
-            <!-- 截屏处理分享 -->
-            <LinearLayout
-                android:id="@+id/linear_screen_shot"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:background="@color/whiteBackground">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="截屏处理分享"
-                    style="@style/TextLeftStyle"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin_arrow_right"
-                    android:src="@drawable/enter"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@color/greyBackground"/>
 
         </LinearLayout>
     </ScrollView>

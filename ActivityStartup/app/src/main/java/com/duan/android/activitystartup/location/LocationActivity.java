@@ -2,15 +2,12 @@ package com.duan.android.activitystartup.location;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.location.LocationListener;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -24,8 +21,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.duan.android.activitystartup.R;
-import com.duan.android.activitystartup.util.ChineseCharToEn;
-import com.duan.android.activitystartup.util.StringUtils;
 
 public class LocationActivity extends AppCompatActivity {
 
@@ -49,13 +44,12 @@ public class LocationActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testChineseHeader();
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        getJW();
-//                    }
-//                }).start();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getJW();
+                    }
+                }).start();
 
             }
         });
@@ -189,11 +183,6 @@ public class LocationActivity extends AppCompatActivity {
                 }
             }
         }.start();
-    }
-
-    public void testChineseHeader(){
-        ChineseCharToEn cte = new ChineseCharToEn();
-        Log.e(TAG, "获取拼音首字母 上海："+ cte.getAllFirstLetter("上海"));
     }
 
 

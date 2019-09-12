@@ -478,26 +478,26 @@ public class BitmapUtilLib {
         try {
             int w = src.getWidth();
             int h = src.getHeight();
-            // 为截屏拼个头
-            Bitmap watermark = BitmapFactory.decodeResource(context.getResources(), R.drawable.screen_shot_top);
-            int ww = watermark.getWidth();
-            int wh = watermark.getHeight();
+            // 为截屏拼个头部
+            Bitmap addBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.screen_shot_top);
+            int addBitmapWidthW = addBitmap.getWidth();
+            int addBitmapWidthH = addBitmap.getHeight();
             int barHeight = ScreenUtils.getStatusBarHeight(context);
             // create the new blank bitmap
-            Bitmap newb = Bitmap.createBitmap(w, h + wh - barHeight - titleHeight, Bitmap.Config.ARGB_8888); // 创建一个新的和SRC长度宽度一样的位图
-            Canvas cv = new Canvas(newb);
+            Bitmap newBitmap = Bitmap.createBitmap(w, h + addBitmapWidthH - barHeight - titleHeight, Bitmap.Config.ARGB_8888); // 创建一个新的和SRC长度宽度一样的位图
+            Canvas cv = new Canvas(newBitmap);
             cv.drawColor(Color.WHITE);
             Paint p = new Paint();
             // draw src into
-            cv.drawBitmap(src, 0, wh - barHeight - titleHeight, p); // 在 0，barHeight坐标开始画入src
+            cv.drawBitmap(src, 0, addBitmapWidthH - barHeight - titleHeight, p); // 在 0，barHeight坐标开始画入src
             // draw watermark into
-            cv.drawBitmap(zoomImg(watermark, w, wh), 0, 0, p); // 在src画入水印
+            cv.drawBitmap(zoomImg(addBitmap, w, addBitmapWidthH), 0, 0, p); // 在src画入水印
             // save all clip
             cv.save(Canvas.ALL_SAVE_FLAG); // 保存
             // store
             cv.restore(); // 存储
-            watermark.recycle();
-            return newb;
+            addBitmap.recycle();
+            return newBitmap;
         } catch (OutOfMemoryError err) {
             Log.e(LOG_TAG, err.toString());
         } finally {
