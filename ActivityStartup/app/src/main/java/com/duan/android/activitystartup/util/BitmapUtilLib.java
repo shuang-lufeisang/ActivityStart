@@ -464,7 +464,7 @@ public class BitmapUtilLib {
     }
 
     /**
-     * 拼接预制图片和屏幕截图
+     * 拼接预制图片和屏幕截图，加头部
      *
      * @param context     上下文
      * @param src         源
@@ -492,6 +492,51 @@ public class BitmapUtilLib {
             cv.drawBitmap(src, 0, addBitmapWidthH - barHeight - titleHeight, p); // 在 0，barHeight坐标开始画入src
             // draw watermark into
             cv.drawBitmap(zoomImg(addBitmap, w, addBitmapWidthH), 0, 0, p); // 在src画入水印
+            // save all clip
+            cv.save(Canvas.ALL_SAVE_FLAG); // 保存
+            // store
+            cv.restore(); // 存储
+            addBitmap.recycle();
+            return newBitmap;
+        } catch (OutOfMemoryError err) {
+            Log.e(LOG_TAG, err.toString());
+        } finally {
+            System.gc();
+        }
+        return null;
+    }
+
+    /**
+     * 拼接预制图片和屏幕截图,加底部
+     *
+     * @param context     上下文
+     * @param src         源（截屏）
+     * @param titleHeight 标题高度
+     * @return 拼接后的图片
+     */
+    public static Bitmap makeBitmapWithBottomForShare(Context context, Bitmap src, int titleHeight) {
+        if (src == null) {
+            return null;
+        }
+        try {
+            int w = src.getWidth();
+            int h = src.getHeight();
+            // 为截屏拼个头部
+            Bitmap addBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.screen_shot_top);
+            int addBitmapWidthW = addBitmap.getWidth();
+            int addBitmapWidthH = addBitmap.getHeight();
+            int barHeight = ScreenUtils.getStatusBarHeight(context);
+            // create the new blank bitmap
+            Bitmap newBitmap = Bitmap.createBitmap(w, h + addBitmapWidthH - barHeight - titleHeight, Bitmap.Config.ARGB_8888); // 创建一个新的和SRC长度宽度一样的位图
+            Canvas cv = new Canvas(newBitmap);
+            cv.drawColor(Color.TRANSPARENT);
+//            cv.drawColor(Color.WHITE);
+            Paint p = new Paint();
+            // draw src into
+            cv.drawBitmap(src, 0, 0, p); // 在 0，0 坐标开始画入src
+//            cv.drawBitmap(src, 0, addBitmapWidthH - barHeight - titleHeight, p); // 在 0，barHeight坐标开始画入src
+            // draw watermark into
+            cv.drawBitmap(zoomImg(addBitmap, w, addBitmapWidthH), 0, h - barHeight - titleHeight, p); // 在src 底部画入水印
             // save all clip
             cv.save(Canvas.ALL_SAVE_FLAG); // 保存
             // store

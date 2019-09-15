@@ -21,6 +21,7 @@ import com.duan.android.activitystartup.R;
 import com.duan.android.activitystartup.screenshot.adapter.CommonAdapter;
 import com.duan.android.activitystartup.screenshot.adapter.ViewHolder;
 import com.duan.android.activitystartup.util.BitmapUtilLib;
+import com.duan.android.activitystartup.util.LogUtils;
 import com.duan.android.activitystartup.util.ScreenUtils;
 import com.duan.android.activitystartup.util.StringUtils;
 
@@ -39,6 +40,7 @@ import java.util.List;
 public class SocialShareDialog extends Dialog implements View.OnClickListener, DialogInterface.OnDismissListener,
         AdapterView.OnItemClickListener, SocialShareInterface.SocialShareListener{
 
+    String TAG = "SocialShareDialog";
     private static final int TOP_BAR_HEIGHT = 48;
     private String mImagePath;
     private Activity mActivity;
@@ -105,15 +107,17 @@ public class SocialShareDialog extends Dialog implements View.OnClickListener, D
                 mScreenBitmap = ScreenUtils.takeScreenshot(mActivity);
 
 
-                // 处理截屏 加背景图
+                // 处理截屏 加背景图 展示
                 mScreenBitmap =
-                        BitmapUtilLib.makeBitmapForShare(
+                        BitmapUtilLib.makeBitmapWithBottomForShare(
+//                        BitmapUtilLib.makeBitmapForShare(
                                 getContext(),
                                 mScreenBitmap,
                                 ScreenUtils.dip2px(getContext(),
                                 TOP_BAR_HEIGHT));
 
                 showLoading(false);
+                LogUtils.printError(TAG,"============== getScreenShot  =============");
                 mScreenIv.setImageBitmap(mScreenBitmap);
             }
         }, 1000);
@@ -227,9 +231,18 @@ public class SocialShareDialog extends Dialog implements View.OnClickListener, D
                 if (mSocialManager == null) {
                     mSocialManager = new SocialManager(mActivity);
                 }
-                Log.e(LOG_TAG, "================= onItemClick ==============");
-                mSocialManager.shareImage(info.type, "", BitmapUtilLib.makeBitmapForShare(getContext(), mScreenBitmap,
-                        ScreenUtils.dip2px(getContext(), TOP_BAR_HEIGHT)), this);
+                // Log.e(LOG_TAG, "================= onItemClick ==============");
+                LogUtils.printError(TAG,"==============  mSocialManager.shareImage  =============");
+                if (mScreenBitmap != null ){
+                    LogUtils.printError(TAG,"==============  mScreenBitmap != null =============");
+                }
+                mSocialManager.shareImage(
+                        info.type,
+                        "",
+                         mScreenBitmap,
+//                        BitmapUtilLib.makeBitmapForShare(getContext(), mScreenBitmap, ScreenUtils.dip2px(getContext(), TOP_BAR_HEIGHT)),
+                        this
+                );
                 // mSocialManager.shareImage(info.type, "", mScreenBitmap, this); //不拼接二维码
                 break;
             default:
